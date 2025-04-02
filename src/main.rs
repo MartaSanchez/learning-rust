@@ -20,6 +20,9 @@ use crate::elevator_events::{
     Direction
 };
 //---------------------------------------------
+pub mod expression_evaluation;
+use crate::expression_evaluation::hello_from_file;
+
 fn main() {
     println!("Hello, world!");
     println!("---------------------------------------------");
@@ -64,6 +67,10 @@ fn main() {
     );
     println!("The car door closed: {:?}", car_door_closed());
     println!("The car has arrived on the 3rd floor: {:?}", car_arrived(3));
+    println!("---------------------------------------------");
+
+    //Expression evaluation
+    hello_from_file();
     println!("---------------------------------------------");
 
 }
