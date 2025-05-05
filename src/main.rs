@@ -23,6 +23,9 @@ use crate::elevator_events::{
 pub mod expression_evaluation;
 use crate::expression_evaluation::hello_from_file;
 
+//---------------------------------------------
+pub mod logger_trait;
+use crate::logger_trait::{VerbosityFilter, Logger, StderrLogger};
 fn main() {
     println!("Hello, world!");
     println!("---------------------------------------------");
@@ -72,6 +75,11 @@ fn main() {
     //Expression evaluation
     hello_from_file();
     println!("---------------------------------------------");
+
+    //Logger trait exercise
+    let logger = VerbosityFilter { max_verbosity: 3, inner: StderrLogger };
+    logger.log(5, "FYI");
+    logger.log(2, "Uhoh");
 
 }
 
