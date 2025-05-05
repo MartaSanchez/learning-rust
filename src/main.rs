@@ -26,6 +26,11 @@ use crate::expression_evaluation::hello_from_file;
 //---------------------------------------------
 pub mod logger_trait;
 use crate::logger_trait::{VerbosityFilter, Logger, StderrLogger};
+//---------------------------------------------
+pub mod generic_min;
+use crate::generic_min::min;
+
+
 fn main() {
     println!("Hello, world!");
     println!("---------------------------------------------");
@@ -80,6 +85,20 @@ fn main() {
     let logger = VerbosityFilter { max_verbosity: 3, inner: StderrLogger };
     logger.log(5, "FYI");
     logger.log(2, "Uhoh");
+    println!("---------------------------------------------");
+
+    //Generic min exercise
+    println!("Generic min exercise test");
+    // Int
+    assert_eq!(min(0, 10), 0);
+    assert_eq!(min(500, 123), 123);
+   // Chars
+    assert_eq!(min('a', 'z'), 'a');
+    assert_eq!(min('7', '1'), '1');
+  // String
+    assert_eq!(min("hello", "goodbye"), "goodbye");
+    assert_eq!(min("bat", "armadillo"), "armadillo");
+    println!("---------------------------------------------");
 
 }
 
