@@ -22,13 +22,15 @@ use crate::elevator_events::{
 //---------------------------------------------
 pub mod expression_evaluation;
 use crate::expression_evaluation::hello_from_file;
-
 //---------------------------------------------
 pub mod logger_trait;
 use crate::logger_trait::{VerbosityFilter, Logger, StderrLogger};
 //---------------------------------------------
 pub mod generic_min;
 use crate::generic_min::min;
+//---------------------------------------------
+pub mod counter;
+use crate::counter::Counter;
 
 
 fn main() {
@@ -92,13 +94,33 @@ fn main() {
     // Int
     assert_eq!(min(0, 10), 0);
     assert_eq!(min(500, 123), 123);
-   // Chars
+    // Chars
     assert_eq!(min('a', 'z'), 'a');
     assert_eq!(min('7', '1'), '1');
-  // String
+    // String
     assert_eq!(min("hello", "goodbye"), "goodbye");
     assert_eq!(min("bat", "armadillo"), "armadillo");
     println!("---------------------------------------------");
+    //Counter exercise
 
+    let mut ctr = Counter::new();
+    ctr.count(13);
+    ctr.count(14);
+    ctr.count(16);
+    ctr.count(14);
+    ctr.count(14);
+    ctr.count(11);
+
+    for i in 10..20 {
+        println!("saw {} values equal to {}", ctr.times_seen(i), i);
+    }
+
+let mut strctr = Counter::new();
+    strctr.count("apple");
+    strctr.count("orange");
+    strctr.count("apple");
+    println!("got {} apples", strctr.times_seen("apple"));
+    println!("---------------------------------------------");
+    
 }
 
