@@ -31,6 +31,12 @@ use crate::generic_min::min;
 //---------------------------------------------
 pub mod counter;
 use crate::counter::Counter;
+//---------------------------------------------
+pub mod rot13;
+use crate::rot13::rot_decoder_funtion;
+//---------------------------------------------
+pub mod log_filter;
+
 
 
 fn main() {
@@ -102,7 +108,7 @@ fn main() {
     assert_eq!(min("bat", "armadillo"), "armadillo");
     println!("---------------------------------------------");
     //Counter exercise
-
+    // Int
     let mut ctr = Counter::new();
     ctr.count(13);
     ctr.count(14);
@@ -114,13 +120,16 @@ fn main() {
     for i in 10..20 {
         println!("saw {} values equal to {}", ctr.times_seen(i), i);
     }
-
-let mut strctr = Counter::new();
+    // String
+    let mut strctr = Counter::new();
     strctr.count("apple");
     strctr.count("orange");
     strctr.count("apple");
     println!("got {} apples", strctr.times_seen("apple"));
     println!("---------------------------------------------");
-    
+    //ROT13 exercise
+    rot_decoder_funtion();
+    println!("---------------------------------------------");
+    //Log filter exercise
 }
 
